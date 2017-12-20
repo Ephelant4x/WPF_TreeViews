@@ -43,14 +43,23 @@ namespace WPF_TreeViews
                 item.Header = drive;
                 item.Tag = drive;
 
+                //Dummy
                 item.Items.Add(null);
 
                 //Add to main tree-view
                 FolderView.Items.Add(item);
+
+                //Listen out for item being expanded
+                item.Expanded += Folder_Expanded;
             }
         }
+        
+        private void Folder_Expanded(object sender, RoutedEventArgs e)
+        {
+            var item = (TreeViewItem)sender;
+
+            if (item.Items.Count == 1)
+        }
         #endregion
-
-
     }
 }
